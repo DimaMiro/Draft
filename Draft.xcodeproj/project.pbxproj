@@ -12,6 +12,7 @@
 		D9552FEF21E00B0500388BDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9552FED21E00B0500388BDB /* Main.storyboard */; };
 		D9552FF121E00B0700388BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9552FF021E00B0700388BDB /* Assets.xcassets */; };
 		D9552FF421E00B0700388BDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9552FF221E00B0700388BDB /* LaunchScreen.storyboard */; };
+		D9552FFC21E00B8D00388BDB /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9552FFB21E00B8D00388BDB /* Canvas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D9552FF021E00B0700388BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9552FF321E00B0700388BDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9552FF521E00B0700388BDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9552FFB21E00B8D00388BDB /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				D9552FE921E00B0500388BDB /* AppDelegate.swift */,
+				D9552FFB21E00B8D00388BDB /* Canvas.swift */,
 				D9552FEB21E00B0500388BDB /* ViewController.swift */,
 				D9552FED21E00B0500388BDB /* Main.storyboard */,
 				D9552FF021E00B0700388BDB /* Assets.xcassets */,
@@ -137,6 +140,7 @@
 			files = (
 				D9552FEC21E00B0500388BDB /* ViewController.swift in Sources */,
 				D9552FEA21E00B0500388BDB /* AppDelegate.swift in Sources */,
+				D9552FFC21E00B8D00388BDB /* Canvas.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +296,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.DimaMiro.Draft;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -310,7 +314,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.DimaMiro.Draft;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
