@@ -9,30 +9,8 @@
 import UIKit
 
 class Canvas: UIView {
+    
     var lines = [[CGPoint]]()
-    
-    let clearButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Clear", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        return button
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.addSubview(clearButton)
-        
-        clearButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 30).isActive = true
-        clearButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-        clearButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        clearButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -67,5 +45,10 @@ class Canvas: UIView {
         lines.append(lastLine)
         
         setNeedsDisplay() // Redraw UIView if needed
+    }
+    
+    @objc func clearCanvas() {
+        lines.removeAll()
+        setNeedsDisplay()
     }
 }
