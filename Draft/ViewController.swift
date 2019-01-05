@@ -36,10 +36,12 @@ class ViewController: UIViewController {
         return button
     }()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLayout()
+    }
+    
+    fileprivate func setupLayout() {
         view.addSubview(canvas)
         canvas.backgroundColor = .white
         canvas.frame = view.frame
