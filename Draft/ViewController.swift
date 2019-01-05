@@ -16,7 +16,6 @@ class ViewController: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Clear", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
         button.isUserInteractionEnabled = true
         return button
     }()
@@ -25,10 +24,19 @@ class ViewController: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Undo", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
         button.isUserInteractionEnabled = true
         return button
     }()
+    
+    let redoButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Redo", for: .normal)
+        button.isUserInteractionEnabled = true
+        return button
+    }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +45,19 @@ class ViewController: UIViewController {
         canvas.frame = view.frame
         
         view.addSubview(clearButton)
-        view.addSubview(undoButton)
+        
+        let stepsStackView = UIStackView(arrangedSubviews: [
+            undoButton,
+            redoButton
+            ])
+        stepsStackView.distribution = .fillEqually
+        
+        view.addSubview(stepsStackView)
+        stepsStackView.translatesAutoresizingMaskIntoConstraints = false
+        stepsStackView.topAnchor.constraint(equalTo: canvas.topAnchor, constant: 30).isActive = true
+        stepsStackView.trailingAnchor.constraint(equalTo: canvas.trailingAnchor, constant: -20).isActive = true
+        stepsStackView.widthAnchor.constraint(equalToConstant: 128).isActive = true
+        stepsStackView.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         clearButton.topAnchor.constraint(equalTo: canvas.topAnchor, constant: 30).isActive = true
         clearButton.leadingAnchor.constraint(equalTo: canvas.leadingAnchor, constant: 20).isActive = true
@@ -45,11 +65,8 @@ class ViewController: UIViewController {
         clearButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         clearButton.addTarget(canvas, action: #selector(canvas.clearCanvas), for: .touchUpInside)
         
-        undoButton.topAnchor.constraint(equalTo: canvas.topAnchor, constant: 30).isActive = true
-        undoButton.trailingAnchor.constraint(equalTo: canvas.trailingAnchor, constant: -20).isActive = true
-        undoButton.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        undoButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         undoButton.addTarget(canvas, action: #selector(canvas.undo), for: .touchUpInside)
+        redoButton.addTarget(canvas, action: #selector(canvas.redo), for: .touchUpInside)
     }
 }
 

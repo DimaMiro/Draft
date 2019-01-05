@@ -59,4 +59,10 @@ class Canvas: UIView {
         lines.removeLast()
         setNeedsDisplay()
     }
+    @objc func redo() {
+        guard let lastRemovedLine = removedLines.last else { return }
+        lines.append(lastRemovedLine)
+        removedLines.removeLast()
+        setNeedsDisplay()
+    }
 }
