@@ -11,6 +11,7 @@ import UIKit
 class Canvas: UIView {
     
     var lines = [[CGPoint]]()
+    var removedLines = [[CGPoint]]()
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -49,6 +50,13 @@ class Canvas: UIView {
     
     @objc func clearCanvas() {
         lines.removeAll()
+        setNeedsDisplay()
+    }
+    
+    @objc func undo() {
+        guard let lastLine = lines.last else { return }
+        removedLines.append(lastLine)
+        lines.removeLast()
         setNeedsDisplay()
     }
 }
