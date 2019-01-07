@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D91BC06121E240E500C6BE98 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BC06021E240E500C6BE98 /* ColorButton.swift */; };
+		D91BC06321E3D83100C6BE98 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BC06221E3D83100C6BE98 /* Line.swift */; };
 		D9552FEA21E00B0500388BDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9552FE921E00B0500388BDB /* AppDelegate.swift */; };
 		D9552FEC21E00B0500388BDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9552FEB21E00B0500388BDB /* ViewController.swift */; };
 		D9552FF121E00B0700388BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9552FF021E00B0700388BDB /* Assets.xcassets */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D91BC06021E240E500C6BE98 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
+		D91BC06221E3D83100C6BE98 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		D9552FE621E00B0500388BDB /* Draft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Draft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9552FE921E00B0500388BDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9552FEB21E00B0500388BDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,10 +60,12 @@
 			children = (
 				D9552FE921E00B0500388BDB /* AppDelegate.swift */,
 				D9552FFB21E00B8D00388BDB /* Canvas.swift */,
+				D91BC06021E240E500C6BE98 /* ColorButton.swift */,
 				D9552FEB21E00B0500388BDB /* ViewController.swift */,
 				D9552FF021E00B0700388BDB /* Assets.xcassets */,
 				D9552FF221E00B0700388BDB /* LaunchScreen.storyboard */,
 				D9552FF521E00B0700388BDB /* Info.plist */,
+				D91BC06221E3D83100C6BE98 /* Line.swift */,
 			);
 			path = Draft;
 			sourceTree = "<group>";
@@ -137,6 +143,8 @@
 				D9552FEC21E00B0500388BDB /* ViewController.swift in Sources */,
 				D9552FEA21E00B0500388BDB /* AppDelegate.swift in Sources */,
 				D9552FFC21E00B8D00388BDB /* Canvas.swift in Sources */,
+				D91BC06121E240E500C6BE98 /* ColorButton.swift in Sources */,
+				D91BC06321E3D83100C6BE98 /* Line.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
