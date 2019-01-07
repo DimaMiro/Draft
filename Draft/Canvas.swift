@@ -54,13 +54,13 @@ class Canvas: UIView {
     @objc func changeColor(sender: ColorButton) {
         switch sender.colorOfButton {
         case .Red?:
-            self.strokeColor = UIColor.red.cgColor
+            self.strokeColor = UIColor.CustomColor.red.cgColor
         case .Blue?:
-            self.strokeColor = UIColor.blue.cgColor
+            self.strokeColor = UIColor.CustomColor.blue.cgColor
         case .Green?:
-            self.strokeColor = UIColor.green.cgColor
+            self.strokeColor = UIColor.CustomColor.green.cgColor
         case .Yellow?:
-            self.strokeColor = UIColor.yellow.cgColor
+            self.strokeColor = UIColor.CustomColor.yellow.cgColor
         case .Black?:
             self.strokeColor = UIColor.black.cgColor
         case .none:

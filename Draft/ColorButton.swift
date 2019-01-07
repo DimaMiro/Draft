@@ -35,13 +35,13 @@ class ColorButton: UIButton {
     fileprivate func checkForColor() {
         switch colorOfButton {
         case .Red?:
-            self.layer.backgroundColor = UIColor.red.cgColor
+            self.layer.backgroundColor = UIColor.CustomColor.red.cgColor
         case .Blue?:
-            self.layer.backgroundColor = UIColor.blue.cgColor
+            self.layer.backgroundColor = UIColor.CustomColor.blue.cgColor
         case .Green?:
-            self.layer.backgroundColor = UIColor.green.cgColor
+            self.layer.backgroundColor = UIColor.CustomColor.green.cgColor
         case .Yellow?:
-            self.layer.backgroundColor = UIColor.yellow.cgColor
+            self.layer.backgroundColor = UIColor.CustomColor.yellow.cgColor
         case .Black?:
             self.layer.backgroundColor = UIColor.black.cgColor
         case .none:
