@@ -19,11 +19,12 @@ enum Colors {
 class ColorButton: UIButton {
 
     var colorOfButton: Colors?
-
     
     init(color: Colors?) {
         self.colorOfButton = color
         super.init(frame: .zero)
+        self.layer.borderColor = UIColor.CustomColor.lightGrey.cgColor
+        self.layer.borderWidth = 2
         self.layer.cornerRadius = 22
         checkForColor()
     }
@@ -31,7 +32,7 @@ class ColorButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     fileprivate func checkForColor() {
         switch colorOfButton {
         case .Red?:
@@ -47,5 +48,13 @@ class ColorButton: UIButton {
         case .none:
             self.layer.backgroundColor = UIColor.clear.cgColor
         }
+    }
+    
+    func setSelected() {
+        self.layer.borderWidth = 3
+        self.layer.borderColor = UIColor.CustomColor.blue.cgColor
+    }
+    func setUnselected() {
+        self.layer.borderColor = UIColor.CustomColor.lightGrey.cgColor
     }
 }

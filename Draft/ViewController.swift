@@ -42,19 +42,39 @@ class ViewController: UIViewController {
     let yellowColorButton = ColorButton(color: .Yellow)
     let blackColorButton = ColorButton(color: .Black)
     
+    var selectedColorButton: ColorButton?
     
+    let strokeWidthButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Stroke:", for: .normal)
+        button.isUserInteractionEnabled = true
+        return button
+    }()
+    
+    let slider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 1
+        slider.maximumValue = 10
+        return slider
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
         setupActions()
+        strokeWidthButton.setTitle("Line width: \(Int(canvas.strokeWidth)) pt", for: .normal)
+        
+        selectedColorButton = blackColorButton
+        selectedColorButton?.setSelected()
     }
     
     fileprivate func setupLayout() {
         view.addSubview(canvas)
-        canvas.backgroundColor = .white
         canvas.frame = view.frame
-        
+        if let image = UIImage(named: "backgroundImage") {
+            canvas.backgroundColor = UIColor(patternImage: image)
+        }
         canvas.addSubview(clearButton)
         clearButton.topAnchor.constraint(equalTo: canvas.topAnchor, constant: 30).isActive = true
         clearButton.leadingAnchor.constraint(equalTo: canvas.leadingAnchor, constant: 20).isActive = true
@@ -82,6 +102,7 @@ class ViewController: UIViewController {
             yellowColorButton
             ])
         colorsStackView.distribution = .equalCentering
+        
         canvas.addSubview(colorsStackView)
         colorsStackView.translatesAutoresizingMaskIntoConstraints = false
         colorsStackView.leadingAnchor.constraint(equalTo: canvas.leadingAnchor, constant: 20).isActive = true
@@ -90,18 +111,22 @@ class ViewController: UIViewController {
         
         blackColorButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         blackColorButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
+
         redColorButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         redColorButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
+
         blueColorButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         blueColorButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
+
         greenColorButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         greenColorButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
+
         yellowColorButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
         yellowColorButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        canvas.addSubview(strokeWidthButton)
+        strokeWidthButton.trailingAnchor.constraint(equalTo: canvas.trailingAnchor, constant: -20).isActive = true
+        strokeWidthButton.bottomAnchor.constraint(equalTo: canvas.bottomAnchor, constant: -20).isActive = true
     }
     
     fileprivate func setupActions() {
@@ -110,13 +135,23 @@ class ViewController: UIViewController {
         undoButton.addTarget(canvas, action: #selector(canvas.undo), for: .touchUpInside)
         redoButton.addTarget(canvas, action: #selector(canvas.redo), for: .touchUpInside)
         
-        redColorButton.addTarget(canvas, action: #selector(canvas.changeColor), for: .touchUpInside)
-        blueColorButton.addTarget(canvas, action: #selector(canvas.changeColor), for: .touchUpInside)
-        greenColorButton.addTarget(canvas, action: #selector(canvas.changeColor), for: .touchUpInside)
-        yellowColorButton.addTarget(canvas, action: #selector(canvas.changeColor), for: .touchUpInside)
-        blackColorButton.addTarget(canvas, action: #selector(canvas.changeColor), for: .touchUpInside)
+        redColorButton.addTarget(self, action: #selector(changeColor), for: .touchUpInside)
+        blueColorButton.addTarget(self, action: #selector(changeColor), for: .touchUpInside)
+        greenColorButton.addTarget(self, action: #selector(changeColor), for: .touchUpInside)
+        yellowColorButton.addTarget(self, action: #selector(changeColor), for: .touchUpInside)
+        blackColorButton.addTarget(self, action: #selector(changeColor), for: .touchUpInside)
     }
     
+    @objc func changeColor(sender: ColorButton) {
+        canvas.changeColor(sender: sender)
+        colorButtonTapped(sender: sender)
+    }
     
+    func colorButtonTapped(sender: ColorButton) {
+        guard selectedColorButton != sender else { return }
+        sender.setSelected()
+        selectedColorButton?.setUnselected()
+        selectedColorButton = sender
+    }
 }
 
