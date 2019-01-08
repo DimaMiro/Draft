@@ -54,8 +54,10 @@ class ViewController: UIViewController {
     
     let slider: UISlider = {
         let slider = UISlider()
+        slider.translatesAutoresizingMaskIntoConstraints = false
         slider.minimumValue = 1
         slider.maximumValue = 10
+        slider.addTarget(self, action: #selector(handleChangeSliderValue), for: .valueChanged)
         return slider
     }()
     
@@ -140,6 +142,8 @@ class ViewController: UIViewController {
         greenColorButton.addTarget(self, action: #selector(changeColor), for: .touchUpInside)
         yellowColorButton.addTarget(self, action: #selector(changeColor), for: .touchUpInside)
         blackColorButton.addTarget(self, action: #selector(changeColor), for: .touchUpInside)
+        
+        strokeWidthButton.addTarget(self, action: #selector(showSlider), for: .touchUpInside)
     }
     
     @objc func changeColor(sender: ColorButton) {
@@ -152,6 +156,25 @@ class ViewController: UIViewController {
         sender.setSelected()
         selectedColorButton?.setUnselected()
         selectedColorButton = sender
+    }
+    
+    @objc func showSlider(sender: UIButton) {
+        let sliderAlert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
+        sliderAlert.view.addSubview(slider)
+        
+        slider.centerXAnchor.constraint(equalTo: sliderAlert.view.centerXAnchor).isActive = true
+        slider.centerYAnchor.constraint(equalTo: sliderAlert.view.centerYAnchor).isActive = true
+        slider.widthAnchor.constraint(equalToConstant: 250).isActive = true
+        
+        sliderAlert.popoverPresentationController?.sourceView = sender
+        sliderAlert.popoverPresentationController?.sourceRect = CGRect(x: 0, y: -8, width: sender.bounds.width, height: 0)
+        self.present(sliderAlert, animated: true, completion: nil)
+    }
+    
+    @objc func handleChangeSliderValue() {
+        print(slider.value)
+        strokeWidthButton.setTitle("Line width: \(Int(slider.value)) pt", for: .normal)
+        canvas.setStrokeWidth(width: CGFloat(slider.value))
     }
 }
 

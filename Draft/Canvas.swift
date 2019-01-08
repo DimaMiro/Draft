@@ -68,6 +68,10 @@ class Canvas: UIView {
         }
     }
     
+    func setStrokeWidth(width: CGFloat) {
+        strokeWidth = width
+    }
+    
     @objc func clearCanvas() {
         lines.removeAll()
         setNeedsDisplay()
